@@ -15,15 +15,22 @@ import DetailScreen from './screens/DetailScreen';
 import HomeScreen from './screens/HomeScreen';
 import * as SplashScreen from 'expo-splash-screen';
 import { CartProvider } from './store/context';
+import { RootStackParamList } from './types/types';
 
 SplashScreen.preventAutoHideAsync();
 setTimeout(SplashScreen.hideAsync, 3000);
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const Tab = createMaterialTopTabNavigator();
 
 const Drawer = createDrawerNavigator();
+
+type RouteParam = {
+  params:{
+    titleOfNext:string
+  }
+}
 
 //top tab navigator
 function MyTabs() {
@@ -38,7 +45,7 @@ function MyTabs() {
 					? (<Text style={{fontWeight: 'bold', fontSize: 14}}>{route.name}</Text>)
 					: (<Text style={{fontWeight: 'normal', fontSize: 15}}>{route.name}</Text>)
 			  },
-        tabBarIndicatorStyle:indicatorStyle={ backgroundColor: 'black' }
+        tabBarIndicatorStyle:{ backgroundColor: 'black' }
       })}
     >
       <Tab.Screen 
@@ -106,7 +113,7 @@ export default function App() {
           name = 'second'
           component = {CategoriesScreen}
           options = {({ route,navigation }) => ({
-            title:route.params.titleOfNext,
+            title:route.params?.titleOfNext,
             headerTitleStyle: {fontSize:18},
             headerLeft: props => <CategoriesIcon onPress={navigation.goBack}/>,
             headerRight: props => <Ionicons name='search-outline' size={26} color='black'></Ionicons>,
@@ -116,25 +123,25 @@ export default function App() {
           name = 'third' 
           component = {GridScreen}
           options = {({ route,navigation }) => ({
-            title:route.params.typeOfProduct,
+            title:route.params?.typeOfProduct,
             headerShadowVisible: false,
             headerTitleAlign: 'left',
             headerBackTitleVisible: false,
             headerTitleStyle: {fontSize:18},
             headerLeft: props => <CategoriesIcon onPress={navigation.goBack}/>,
-            headerRight: props => <HeaderIconRight />,
+            headerRight: props => <HeaderIconRight margin={false}/>,
         })}
         />
         <Stack.Screen 
           name = 'fourth' 
           component = {DetailScreen}
           options = {({ route,navigation }) => ({
-            title:route.params.name,
+            title:route.params?.name,
             headerTitleStyle: {fontSize:18},
             headerShadowVisible: false,
             headerBackTitleVisible: false,
             headerLeft: props => <CategoriesIcon onPress={navigation.goBack}/>,
-            headerRight: props => <HeaderIconRight />
+            headerRight: props => <HeaderIconRight margin={false}/>
         })}
         />
         <Stack.Screen 

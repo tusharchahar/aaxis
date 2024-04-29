@@ -1,5 +1,4 @@
-import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import CategoryNavigate from '../components/CategoryNavigate';
 
 function HomeScreen(){
@@ -14,7 +13,7 @@ function HomeScreen(){
                 <View style = {styles.options}>
                 <ScrollView 
                     horizontal = {true} 
-                    contentContainerStyle = {{gap: 16, paddingBottom:5}} 
+                    contentContainerStyle = {{gap: 16, paddingBottom:5, paddingHorizontal:20}} 
                     bounces = {false}
                     showsHorizontalScrollIndicator = {false}
                 >
@@ -55,7 +54,7 @@ function HomeScreen(){
                 <View style = {styles.options}>
                 <ScrollView 
                     horizontal = {true} 
-                    contentContainerStyle = {{gap: 16, paddingBottom:5}} 
+                    contentContainerStyle = {{gap: 16, paddingBottom:5, paddingHorizontal:20}} 
                     bounces = {false}
                     showsHorizontalScrollIndicator = {false}
                 >
@@ -103,7 +102,7 @@ function HomeScreen(){
                 <View style={styles.options}>
                 <ScrollView 
                     horizontal = {true} 
-                    contentContainerStyle = {{gap: 16, paddingBottom:5}} 
+                    contentContainerStyle = {{gap: 16, paddingBottom:5, paddingHorizontal:20}} 
                     bounces = {false}
                     showsHorizontalScrollIndicator = {false}
                 >
@@ -157,7 +156,7 @@ export default HomeScreen;
 
 const styles = StyleSheet.create({
     root: {
-      padding: 20,
+      paddingVertical: 20,
       backgroundColor: 'white',
       height:'100%',
       overflow:'visible'
@@ -168,12 +167,14 @@ const styles = StyleSheet.create({
     },
     second:{
         gap:10,
+        paddingHorizontal:20,
         flexDirection:'column',
         width:'100%',
         marginBottom:25,
         overflow:'visible'
     },
     heading:{
+        paddingHorizontal:20,
         paddingBottom:15
     },
     title:{
@@ -218,8 +219,8 @@ const styles = StyleSheet.create({
         marginTop: 5
     },
     button2:{
-        width:'100%',
         padding:15,
+        marginHorizontal:20,
         justifyContent:'center',
         alignItems:'center',
         backgroundColor:'#DFE2E8',

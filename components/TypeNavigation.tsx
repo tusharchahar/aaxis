@@ -1,12 +1,13 @@
 import { Text,Pressable, StyleSheet, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
+import { TypeParamList } from '../types/types';
 
-function TypeNavigate({value}){
-    const navigation = useNavigation();
+function TypeNavigate({value} : {value : string}){
+    const navigation: TypeParamList = useNavigation();
 
     //navigate to third native-stack screen
-    function navigationn(type){
+    function navigationn(type:string){
       navigation.navigate('third',{
         typeOfProduct: type
       });

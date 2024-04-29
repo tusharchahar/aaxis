@@ -1,5 +1,5 @@
 //dummy data
-const productListData = {
+const productListData: any = {
     "New Products": [
         {
           id: 1,
@@ -650,6 +650,10 @@ const productListData = {
       ]
       
 }
-export default fetchProductList = (listType) => {
-    return productListData[listType];
+export const completeProductList = (listType: string) => {
+    return productListData[listType];//all products of a category
+  }
+  
+export default function fetchProductList(listType: string, pageNumber: number){
+      return productListData[listType].slice((pageNumber-1)*10, pageNumber*10-1 );//products specific to any page number for a category
 }

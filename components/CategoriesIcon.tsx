@@ -1,7 +1,7 @@
 import { Pressable, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-function CategoriesIcon({onPress}){
+function CategoriesIcon({onPress}:{onPress:() => {}}){
     return (
     <View>
         <Pressable onPress = {onPress}>

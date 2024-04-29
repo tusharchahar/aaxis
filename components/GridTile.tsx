@@ -1,9 +1,11 @@
 import { View, Pressable, Text, StyleSheet, Dimensions } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
+import { memo } from "react";
+import { GridParamList } from "../types/types";
 
-function GridTile({title, type, id, price, clothType}){
-    const navigation = useNavigation();
+function GridTile({title, type, id, price, clothType}:{title:string,type:string,id:number,price:number,clothType:string}){
+    const navigation: GridParamList = useNavigation();
 
     function clickbait(){
       navigation.navigate('fourth',{
@@ -30,7 +32,7 @@ function GridTile({title, type, id, price, clothType}){
         </View>)
 }
 
-export default GridTile;
+export default memo(GridTile);
 
 const styles = StyleSheet.create({
     outerContainer:{

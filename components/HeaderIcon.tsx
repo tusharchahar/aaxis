@@ -1,8 +1,9 @@
 import { Pressable, StyleSheet, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { memo } from "react";
 
 //for back arrow symbol in header
-function HeaderIcon({onPress}){
+function HeaderIcon({onPress}: {onPress: () => {}}){
     return (
     <View style = {styles.button}>
         <Pressable onPress = {onPress}>
@@ -11,7 +12,7 @@ function HeaderIcon({onPress}){
     </View>
 )}
 
-export default HeaderIcon;
+export default memo(HeaderIcon);
 
 const styles = StyleSheet.create({
     button:{

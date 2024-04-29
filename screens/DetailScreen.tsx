@@ -1,13 +1,13 @@
 import { View, Text, StyleSheet, Pressable, ScrollView, Alert } from 'react-native';
 import { useRoute } from '@react-navigation/native';
-import useProductList from '../Utils/hooks/useProductList';
+import { completeProductList } from '../Utils/api/productList';
 import { Ionicons } from '@expo/vector-icons';
 import { CartContext } from '../store/context';
 import { useContextSelector } from 'use-context-selector';
 
 function DetailScreen(){
-    const route = useRoute();
-    const productDetails = useProductList(route.params.typeOfProduct).find((product) => product.id === route.params.productId);
+    const route:any = useRoute();
+    const productDetails = completeProductList(route.params?.typeOfProduct).find((product:any) => product.id === route.params?.productId);
     const addToCart = useContextSelector(CartContext, (v) => v.addToCart);
 
     function addProduct(){
@@ -27,7 +27,7 @@ function DetailScreen(){
                 <View style={styles.options}>
                     <ScrollView 
                         horizontal={true} 
-                        contentContainerStyle={{gap: 16}}
+                        contentContainerStyle={{gap: 16, paddingHorizontal:20}}
                         bounces={false}
                         showsHorizontalScrollIndicator={false}   
                     >
@@ -72,14 +72,13 @@ export default DetailScreen;
 
 const styles = StyleSheet.create({
     root: {
-        paddingHorizontal: 20,
         backgroundColor: 'white',
         height:'100%',
         overflow:'visible'
       },
     slab:{
       height:400,
-      width:'100%',
+      marginHorizontal:20,
       backgroundColor:'#F0F2F5',
       marginBottom: 20,
       borderRadius: 6,
@@ -97,8 +96,8 @@ const styles = StyleSheet.create({
         overflow:'hidden'
     },
     info:{
-        width: '100%',
-        marginBottom:10,
+        marginBottom: 10,
+        marginHorizontal: 20,
     },
     slab2:{
       width:'100%',
@@ -119,7 +118,8 @@ const styles = StyleSheet.create({
         marginVertical:10
     },
     cart:{
-        paddingBottom:50
+        paddingBottom:50,
+        marginHorizontal:20
     },
     buyNow:{
         flexDirection:'row',

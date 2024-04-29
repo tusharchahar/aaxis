@@ -1,11 +1,16 @@
 import { Text,Pressable, StyleSheet, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { CategoryParamList } from '../types/types';
 
-function CategoryNavigate({value}){
-    const navigation = useNavigation();
+export type NavigateParamList = {
+    navigate: (screen:string,{titleOfNext}:{titleOfNext:string})=>void
+};
+
+function CategoryNavigate({value}:{value: string}){
+    const navigation: CategoryParamList = useNavigation();
 
     //navigate to second native-stack screen
-    function navigaate(title){
+    function navigaate(title: string){
         navigation.navigate('second',{
             titleOfNext:title
         });
@@ -40,9 +45,6 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.1,
         backgroundColor:'white',
         overflow:'visible'
-    },
-    button:{
-        flexDirection:'row',
     },
     innerContainer:{
         flex:4,

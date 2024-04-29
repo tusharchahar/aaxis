@@ -1,10 +1,12 @@
 import { Pressable, StyleSheet, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { memo } from "react";
+import { HeaderParamList } from '../types/types';
 
 // for search and cart symbol
-function HeaderIconRight({margin}){
-    const navigation = useNavigation();
+function HeaderIconRight({ margin }: { margin: boolean }){
+    const navigation: HeaderParamList = useNavigation();
 
     function cart(){
         navigation.navigate('fifth');
@@ -24,7 +26,7 @@ function HeaderIconRight({margin}){
     </View>
 )}
 
-export default HeaderIconRight;
+export default memo(HeaderIconRight);
 
 const styles = StyleSheet.create({
     button:{
