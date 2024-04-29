@@ -4,10 +4,11 @@ import { completeProductList } from '../Utils/api/productList';
 import { Ionicons } from '@expo/vector-icons';
 import { CartContext } from '../store/context';
 import { useContextSelector } from 'use-context-selector';
+import { product } from '../types/types';
 
 function DetailScreen(){
     const route:any = useRoute();
-    const productDetails = completeProductList(route.params?.typeOfProduct).find((product:any) => product.id === route.params?.productId);
+    const productDetails = completeProductList(route.params?.typeOfProduct).find((product:product) => product.id === route.params?.productId);
     const addToCart = useContextSelector(CartContext, (v) => v.addToCart);
 
     function addProduct(){

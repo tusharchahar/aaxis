@@ -14,7 +14,7 @@ export const CartProvider = ({ children }: { children: ReactNode}) => {
     const [cartItems, setCartItems] = useState<product[]>([]);
 
     const addToCart = (item: product): void => {
-        const isItemInCart = cartItems.find((cartItem: any) => cartItem.id === item.id); // check if the item is already in the cart
+        const isItemInCart = cartItems.find((cartItem: product) => cartItem.id === item.id); // check if the item is already in the cart
       
         if (isItemInCart) {
         setCartItems(
@@ -40,10 +40,10 @@ export const CartProvider = ({ children }: { children: ReactNode}) => {
     }
 
     const removeFromCart = (item : product): void => {
-        const isItemInCart: product| undefined = cartItems.find((cartItem : any) => cartItem.id === item.id);
+        const isItemInCart: product| undefined = cartItems.find((cartItem : product) => cartItem.id === item.id);
       
         if (isItemInCart?.quantity === 1) {
-          setCartItems(cartItems.filter((cartItem : any) => cartItem.id !== item.id)); // if the quantity of the item is 1, remove the item from the cart
+          setCartItems(cartItems.filter((cartItem : product) => cartItem.id !== item.id)); // if the quantity of the item is 1, remove the item from the cart
         } else {
           setCartItems(
             cartItems.map((cartItem) =>

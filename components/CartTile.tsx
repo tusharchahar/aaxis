@@ -1,6 +1,5 @@
 import { View, Pressable, Text, StyleSheet } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
-import { memo } from "react";
 import { Picker} from '@react-native-picker/picker';
 import { CartContext } from '../store/context';
 import { useContextSelector } from 'use-context-selector';
@@ -47,7 +46,7 @@ function CartTile({itemData}: {itemData: {item: product}}){
           </View>)
 }
 
-export default memo(CartTile);
+export default CartTile;
 
 const styles = StyleSheet.create({
     outerContainer:{ 
