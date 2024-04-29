@@ -42,16 +42,8 @@ export const CartProvider = ({ children }: { children: ReactNode}) => {
     const removeFromCart = (item : product): void => {
         const isItemInCart: product| undefined = cartItems.find((cartItem : product) => cartItem.id === item.id);
       
-        if (isItemInCart?.quantity === 1) {
-          setCartItems(cartItems.filter((cartItem : product) => cartItem.id !== item.id)); // if the quantity of the item is 1, remove the item from the cart
-        } else {
-          setCartItems(
-            cartItems.map((cartItem) =>
-              cartItem.id === item.id
-                ? { ...cartItem, quantity: cartItem.quantity? cartItem.quantity - 1 : 1} // if the quantity of the item is greater than 1, decrease the quantity of the item
-                : cartItem
-            )
-          );
+        if (isItemInCart) {
+          setCartItems(cartItems.filter((cartItem : product) => cartItem.id !== item.id));
         }
     };
 

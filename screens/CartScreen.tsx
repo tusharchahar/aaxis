@@ -2,18 +2,10 @@ import { View, Text, StyleSheet, FlatList } from 'react-native';
 import { CartContext } from '../store/context';
 import { useContextSelector } from 'use-context-selector';
 import CartTile from '../components/CartTile';
-import { product } from '../types/types';
-
 
 function CartScreen(){
   const cartItems = useContextSelector(CartContext, v => v.cartItems);
   const getCartTotal = useContextSelector(CartContext, v => v.getCartTotal);
-
-  function renderItem(itemData : { item: product}) {
-    return <CartTile 
-                itemData = {itemData}
-            />
-  }
 
   return (
                 <View style={styles.root}>
@@ -21,7 +13,13 @@ function CartScreen(){
                     <FlatList 
                         data={cartItems} 
                         keyExtractor={(item: any) => item.id} 
-                        renderItem={renderItem} 
+                        renderItem={({item, index}) => (
+                          <CartTile
+                            itemData={{item:item}}
+                            index={index}
+                          >
+                          </CartTile>
+                        )}
                         numColumns={1} 
                         bounces={false}
                         showsVerticalScrollIndicator={false}

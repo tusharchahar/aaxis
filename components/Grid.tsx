@@ -1,6 +1,6 @@
 import { Text, View, StyleSheet, FlatList } from 'react-native';
 import GridTile from './GridTile';
-import { useState, useEffect, memo } from 'react';
+import { useState, useEffect } from 'react';
 import fetchProductList from '../Utils/api/productList';
 import { product } from '../types/types';
 
@@ -18,9 +18,9 @@ function Grid({ category }:{ type: string, category: string}) {
                 />
     }
 
-    const footerComponent = memo(() => {
+    const footerComponent = () => {
         return isLoading ? <Text style={{textAlign:'center'}}>Loading....</Text> : null;
-    })
+    }
 
     const loadMoreItem = () => {
         setPageNumber(pageNumber + 1);

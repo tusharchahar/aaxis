@@ -5,7 +5,7 @@ import { CartContext } from '../store/context';
 import { useContextSelector } from 'use-context-selector';
 import { product } from "../types/types";
 
-function CartTile({itemData}: {itemData: {item: product}}){
+function CartTile({itemData, index}: {itemData: {item: product}, index: number}){
     const changeQuantity = useContextSelector(CartContext, v => v.changeQuantity);
     const removeFromCart = useContextSelector(CartContext, v => v.removeFromCart);
 
@@ -16,6 +16,7 @@ function CartTile({itemData}: {itemData: {item: product}}){
     
     return (
           <View style = {styles.outerContainer}>
+            <Text style={styles.count}>{index+1}.</Text>
            <View style = {styles.gridItem}>
                <View style = {styles.innerContainer}>
                    <Ionicons style = {{ position: 'absolute', right: 16, top:16 }} name = 'star-outline' size=  {20} color = 'black'></Ionicons>
@@ -89,4 +90,9 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 18,
     },
+    count:{
+        fontSize:18,
+        marginVertical:10,
+        marginHorizontal:5
+    }
 });
